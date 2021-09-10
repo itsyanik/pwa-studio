@@ -1,6 +1,5 @@
 .root {
-    background-color: rgb(var(--venia-global-color-gray-50));
-    box-shadow: 0 2px rgb(var(--venia-global-color-gray-100));
+    composes: header from global;
     display: grid;
     grid-auto-columns: 100%;
     justify-items: center;
