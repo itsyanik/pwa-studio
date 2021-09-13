@@ -100,54 +100,60 @@ getModuleRules.js = async ({
  * @returns Rule object for Webpack `module` configuration which parses
  *   CSS files
  */
-getModuleRules.css = async ({ hasFlag, mode, paths }) => ({
-    test: /\.css$/,
-    oneOf: [
-        {
-            test: [paths.src, ...hasFlag('cssModules')],
-            use: [
-                {
-                    loader: 'style-loader',
-                    options: {
-                        injectType:
-                            mode === 'development'
-                                ? 'styleTag'
-                                : 'singletonStyleTag'
-                    }
-                },
-                {
-                    loader: 'css-loader',
-                    options: {
-                        modules: {
-                            localIdentName: '[name]-[local]-[hash:base64:3]'
+getModuleRules.css = async ({ hasFlag, mode, paths }) => (
+    {
+        //TODO: Check for module.css
+    },
+    {
+        test: /\.css$/,
+        oneOf: [
+            {
+                test: [paths.src, ...hasFlag('cssModules')],
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            injectType:
+                                mode === 'development'
+                                    ? 'styleTag'
+                                    : 'singletonStyleTag'
                         }
-                    }
-                },
-                'postcss-loader'
-            ]
-        },
-        {
-            include: /node_modules/,
-            use: [
-                {
-                    loader: 'style-loader',
-                    options: {
-                        injectType:
-                            mode === 'development'
-                                ? 'styleTag'
-                                : 'singletonStyleTag'
-                    }
-                },
-                {
-                    loader: 'css-loader',
-                    options: {
-                        modules: false
-                    }
-                }
-            ]
-        }
-    ]
-});
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[name]-[local]-[hash:base64:3]'
+                            }
+                        }
+                    },
+                    'postcss-loader'
+                ]
+            },
+            {
+                include: /node_modules/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            injectType:
+                                mode === 'development'
+                                    ? 'styleTag'
+                                    : 'singletonStyleTag'
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: false
+                        }
+                    },
+                    'postcss-loader'
+                ]
+            }
+        ]
+    }
+);
 
 /**
  * @param {Buildpack/WebpackTools~WebpackConfigHelper} helper

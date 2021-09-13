@@ -6,6 +6,9 @@ import app from '@magento/peregrine/lib/store/actions/app';
 import Adapter from '@magento/venia-ui/lib/components/Adapter';
 import { registerSW } from './registerSW';
 
+import classes from "./index.css"
+
+console.log(classes.foo);
 // server rendering differs from browser rendering
 const isServer = !globalThis.document;
 

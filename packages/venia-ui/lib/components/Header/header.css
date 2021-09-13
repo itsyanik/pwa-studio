@@ -1,5 +1,6 @@
 .root {
     composes: header from global;
+    composes: mx-auto from global;
     display: grid;
     grid-auto-columns: 100%;
     justify-items: center;

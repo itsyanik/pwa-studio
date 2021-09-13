@@ -3,7 +3,7 @@ const createPlugin = require('tailwindcss/plugin');
 const plugins = [
     // base plugins
     require('./root'),
-		// component plugins
+    // component plugins
     require('./components/header')
 ];
 
