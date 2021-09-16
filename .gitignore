@@ -21,3 +21,7 @@ docker/certs
 
 ## May temporarily create tarballs during scaffolding debug
 packages/**/*.tgz
+
+## Dangerfile is copied in from CICD repo in CI, so a malicious PR can't expose
+## privileged info that the dangerfile can access
+dangerfile.js

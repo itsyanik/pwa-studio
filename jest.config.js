@@ -353,7 +353,8 @@ if (process.env.npm_lifecycle_event === 'test:ci') {
             'jest-junit',
             {
                 suiteName: 'Jest unit and functional tests',
-                output: './test-results/jest/results.xml',
+                outputDirectory: './test-results/jest',
+                outputName: 'results.xml',
                 suiteNameTemplate: ({ displayName, filepath }) =>
                     `${displayName}: ${testPathToFilePath(
                         testPathToFilePath(filepath)
